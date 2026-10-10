@@ -55,6 +55,49 @@ int main() {
         // Low Risk
     }
 
+    std::cout << "\n===== DIGITAL TRANSACTION RISK ENGINE =====\n";
+
+    if (TransactionAmount > AccountBalance) {
+        std::cout << "Risk Level: NOT EVALUATED\n";
+        std::cout << "Transaction Status: BLOCKED\n";
+        std::cout << "Reason: INSUFFICIENT BALANCE\n";
+    }
+    else if (FailedAttempts >= 3) {
+        std::cout << "Risk Level: HIGH RISK\n";
+        std::cout << "Transaction Status: BLOCKED\n";
+    }
+    else if (NewDevice == 1 && TransactionAmount >= 30000) {
+        std::cout << "Risk Level: HIGH RISK\n";
+        std::cout << "Transaction Status: BLOCKED\n";
+    }
+    else if (InternationalTransaction == 1 && TransactionAmount >= 25000) {
+        std::cout << "Risk Level: HIGH RISK\n";
+        std::cout << "Transaction Status: BLOCKED\n";
+    }
+    else if (TransactionAmount >= 50000) {
+        std::cout << "Risk Level: MEDIUM RISK\n";
+        std::cout << "Transaction Status: REVIEW REQUIRED\n";
+    }
+    else if (TransactionHour >= 0 && TransactionHour <= 5) {
+        std::cout << "Risk Level: MEDIUM RISK\n";
+        std::cout << "Transaction Status: REVIEW REQUIRED\n";
+    }
+    else {
+        std::cout << "Risk Level: LOW RISK\n";
+        std::cout << "Transaction Status: APPROVED\n";
+    }
+
+    std::cout << "Account Balance: " << AccountBalance << "\n";
+    std::cout << "Transaction Amount: " << TransactionAmount << "\n";
+
+    if (TransactionAmount <= AccountBalance) {
+        std::cout << "Remaining Balance: " << RemainingBalance << "\n";
+    }
+    else {
+        std::cout << "Remaining Balance: Not Applicable\n";
+    }
+
+    std::cout << "===========================================\n";
 
     return 0; 
 }
